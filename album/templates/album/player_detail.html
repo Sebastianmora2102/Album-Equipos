@@ -12,13 +12,15 @@
        {% endif %}
     </h2>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
-   <hr>
+    <a href="{% url "player-update" object.id %}">edit</a>
+    <a href="{% url "player-delete" object.id %}">delete</a> 
+    <hr>
 {% endblock section %}
 
 {% block maincontent %}
 <div>
  <div>
-     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
+     <img src="{% static object.photo.url %}" style="width:230px;height:170px" />
  </div>
 </div>
 {% endblock maincontent %} 
