@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles</title>
-</head>
-<body>
-    {{object.id}} {{object.first_name}} {{object.last_name}}
-</body>
-</html>
+{% extends './base.html' %}
+
+{% load static %}
+
+{% block section %}
+   <h2>
+       {{ object.first_name }} {{ object.last_name }}
+       {% if object.team_id %}
+         ( <a href="{% url "team-detail" object.team_id %}">
+             {{ object.team }}
+           </a> )
+       {% endif %}
+    </h2>
+    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
+   <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div>
+ <div>
+     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
+ </div>
+</div>
+{% endblock maincontent %} 

@@ -1,11 +1,17 @@
-<h1>GIRO</h1>
+{% extends './base.html' %}
 
-<h2>Equipos</h2>
+{% block section %}
+	 <h2>Team</h2>
+	 <hr>
+{% endblock section %}
 
-<div>
-    {% for c in object_list %}
-        <a href="{% url 'team-detail' c.pk %}">
-            {{ c.name }} <br>
-        </a>
-    {% endfor %}
-</div>
+{% block maincontent %}
+   <div>
+
+      {% for c in object_list %}
+         <a href="{% url 'team-detail' c.pk %}">
+              {{ c.name }} <br>
+         </a>
+      {% endfor %}
+    </div>
+{% endblock maincontent %}
