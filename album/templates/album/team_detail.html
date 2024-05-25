@@ -1,22 +1,29 @@
 {% extends './base.html' %}
-
 {% load static %}
-
 {% block section %}
-   <h2>
-       {{ object.name }}
-
-    </h2>
-    <a href="{% url "team-update" object.id %}">Editar</a>
-    <a href="{% url "team-delete" object.id %}">Eliminar</a> 
+    <h2>{{ object.name }}</h2>
     <hr>
 {% endblock section %}
 
 {% block maincontent %}
-<div>
- <div>
-     <img src="{% static object.photo.url %}" style="width:230px;height:170px" />
- </div>
-</div>
+  <div>
+      <a href="{% url "team-update" object.id %}">edit</a>
+      <a href="{% url "team-delete" object.id %}">delete</a> 
+     <table border="1px">
+      <tr>
+          {% for p in object.get_players.all %}
+             <td>
+               <div>{{ p.first_name }} {{ p.last_name }}</div>
+               <div>
+                  <a href="{% url "player-detail" p.id %}">
+                     <img src="{% static p.photo.url %}" style="width:170px;height:200px"/>
+                  </a>
+               </div>
+             </td>
+           {% endfor %}
+       </tr> 
+      </table>
+   </div>
 {% endblock maincontent %}
+
 
