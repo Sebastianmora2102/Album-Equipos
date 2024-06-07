@@ -1,8 +1,19 @@
 from django.urls import reverse_lazy 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from album.models import Team, Player
+from rest_framework import generics
+from .serializers import TeamSerializer, PlayerSerializer
 
 # Create your views here.
+
+class TeamList(generics.ListCreateAPIView):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+
+class PlayerList(generics.ListCreateAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerSerializer
+
 class TeamListView(ListView):
     model = Team
 

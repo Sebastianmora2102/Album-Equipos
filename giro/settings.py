@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'album',
     'adminlte3',
     'adminlte3_theme',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
